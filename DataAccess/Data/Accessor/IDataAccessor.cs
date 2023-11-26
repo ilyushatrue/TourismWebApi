@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Data;
+﻿namespace DataAccess.Data.Accessor;
 
 public interface IDataAccessor<T>
 {

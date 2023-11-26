@@ -15,20 +15,20 @@ public class SqlDataAccess : ISqlDataAccess
     }
 
     public async Task<IEnumerable<T>> LoadData<T, U>(
-        string storeProcedure,
+        string storedProcedure,
         U parameters,
         string connectionId = "Default")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
-        return await connection.QueryAsync<T>(storeProcedure, parameters, commandType: CommandType.StoredProcedure);
+        return await connection.QueryAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
     }
 
     public async Task SaveData<T>(
-        string storeProcedure,
+        string storedProcedure,
         T parameters,
         string connectionId = "Default")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
-        await connection.ExecuteAsync(storeProcedure, parameters, commandType: CommandType.StoredProcedure);
+        await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
     }
 }

@@ -1,4 +1,5 @@
-﻿using DataAccess.DbAccess;
+﻿global using DataAccess.Data.Accessor;
+using DataAccess.DbAccess;
 using DataAccess.Models;
 
 namespace DataAccess.Data;
