@@ -1,9 +1,10 @@
 ﻿global using DataAccess.Data.Accessor;
+using AutoMapper;
 using DataAccess.DbAccess;
-using DataAccess.Models;
+using DataAccess.Models.User;
 
 namespace DataAccess.Data;
 public class UserData : DataAccessor<UserModel>
 {
-    public UserData(ISqlDataAccess db) : base(db) { }
+    public UserData(IDbAccess db, IMapper mapper) : base(db, mapper) { }
 }

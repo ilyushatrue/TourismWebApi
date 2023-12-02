@@ -1,14 +1,17 @@
-﻿namespace TourismWebApi.DAL;
+﻿using DataAccess.Models.User;
+using DataAccess.Models.User.DTOs;
 
-public static class UserEndpoints
+namespace TourismWebApi.Endpoints;
+
+public static class UserEPs
 {
     public static void AddUserEndpoints(this IEndpointRouteBuilder app)
     {
-        app.MapGet("/Users", GetUsers);
-        app.MapGet("/Users/{id}", GetUser);
-        app.MapPost("/Users", InsertUser);
-        app.MapPut("/Users", UpdateUser);
-        app.MapDelete("/Users", DeleteUser);
+        app.MapGet("/users", GetUsers);
+        app.MapGet("/users/{id}", GetUser);
+        app.MapPost("/users", InsertUser);
+        app.MapPut("/users", UpdateUser);
+        app.MapDelete("/users", DeleteUser);
     }
 
     private static async Task<IResult> GetUsers(UserData data)
@@ -16,7 +19,7 @@ public static class UserEndpoints
         try
         {
 
-            return Results.Ok(await data.GetAll());
+            return Results.Ok(await data.GetAll<UserReadDto>());
         }
         catch (Exception ex)
         {
@@ -27,7 +30,7 @@ public static class UserEndpoints
     {
         try
         {
-            var result = await data.Get(id);
+            var result = await data.Get<UserReadDto>(id);
             if (result == null) return Results.NotFound(); 
             return Results.Ok(result);
         }
@@ -36,11 +39,11 @@ public static class UserEndpoints
             return Results.Problem(ex.Message);
         }
     }
-    private static async Task<IResult> InsertUser(UserModel model, UserData data)
+    private static async Task<IResult> InsertUser(UserInsertDto dto, UserData data)
     {
         try
         {
-            await data.Insert(model);
+            await data.Insert(dto);
             return Results.Ok();
         }
         catch (Exception ex)

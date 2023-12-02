@@ -1,6 +1,5 @@
-﻿namespace DataAccess.Data.Accessor;
-
-public interface IDataAccessor
+﻿namespace DataAccess.Data;
+public interface IUserData
 {
     Task Delete(int id);
     Task<TDto?> Get<TDto>(int id);

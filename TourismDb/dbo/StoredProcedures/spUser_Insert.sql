@@ -1,12 +1,15 @@
-﻿CREATE PROCEDURE [dbo].[spUser_Update]
-	@Id int,
-	@FirstName nvarchar(50),
-	@LastName nvarchar(50)
+﻿CREATE PROCEDURE [dbo].[spUser_Insert]
+    @FirstName NVARCHAR(50),
+    @LastName NVARCHAR(50),
+    @Email VARCHAR(100),
+    @Password VARCHAR(200),
+    @PhoneNumber CHAR(11),
+    @CreatedDate TIMESTAMP,
+    @UpdatedDate TIMESTAMP,
+    @IsDeleted BIT 
 AS
 begin
-	update dbo.[User] 
-	set 
-	FirstName = @FirstName,
-	LastName = @LastName
-	where Id = @Id;
+	insert into dbo.[User] ([FirstName], [LastName], [Email], [Password], [PhoneNumber], [CreatedDate], [UpdatedDate], [IsDeleted])
+	values (@FirstName, @LastName, @Email, @Password, @PhoneNumber, @CreatedDate, @UpdatedDate, @IsDeleted);
 end
+

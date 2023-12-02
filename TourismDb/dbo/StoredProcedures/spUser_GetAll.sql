@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spUser_GetAll]
 AS
 begin
-	select Id, FirstName, LastName 
+	select *
 	from dbo.[User];
 end

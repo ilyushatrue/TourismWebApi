@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace TourismWebApi.DAL;
+namespace TourismWebApi.Endpoints;
 
 public class APIResponse
 {

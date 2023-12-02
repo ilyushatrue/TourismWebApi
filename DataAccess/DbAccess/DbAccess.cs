@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace DataAccess.DbAccess;
 
-public class SqlDataAccess : ISqlDataAccess
+public class DbAccess : IDbAccess
 {
     private readonly IConfiguration _config;
 
-    public SqlDataAccess(IConfiguration config)
+    public DbAccess(IConfiguration config)
     {
         _config = config;
     }
@@ -29,6 +29,6 @@ public class SqlDataAccess : ISqlDataAccess
         string connectionId = "Default")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
-        await connection.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+        await connection.ExecuteScalarAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
     }
 }
