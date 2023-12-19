@@ -39,7 +39,7 @@ public static class UserEPs
             return Results.Problem(ex.Message);
         }
     }
-    private static async Task<IResult> InsertUser(UserInsertDto dto, UserData data)
+    private static async Task<IResult> InsertUser(UserCreateDto dto, UserData data)
     {
         try
         {

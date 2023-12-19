@@ -109,7 +109,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.MapPost("/account/login", [AllowAnonymous] (UserInsertDto user) =>
+app.MapPost("/account/login", [AllowAnonymous] (UserCreateDto user) =>
 {
     if (user.FirstName == "Ilya" && user.Password == "qwer1234")
     {
